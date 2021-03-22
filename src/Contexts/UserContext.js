@@ -38,10 +38,11 @@ export const UserStorage = ({ children }) => {
       else {
         setLogin(true);
         setToken(storageToken);
+        history.push('/');
       }
     }
     autoLogin();
-  }, [userLogout]);
+  }, [userLogout, history]);
 
   return (
     <UserContext.Provider value={{ userLogin, userLogout, login, token }}>
