@@ -39,6 +39,10 @@ const Home = () => {
   const closeModalDelete = () => {
     setModalDelete(false);
   };
+  const selectNaverDelete = (naver) => {
+    setNaver(naver);
+    setModalDelete(true);
+  };
 
   return (
     <div>
@@ -72,7 +76,7 @@ const Home = () => {
               naver={naver}
               key={naver.id}
               openDetailModal={() => openDetailModal(naver)}
-              setModalDelete={() => setModalDelete(true)}
+              setModalDelete={() => selectNaverDelete(naver)}
             ></CardNaver>
           ))}
         </ContainerCards>
