@@ -11,11 +11,11 @@ const EditNaver = (props) => {
   const [modalInfo, setModalInfo] = useState(false);
   const history = useHistory();
 
-  async function submitData(data) {
+  const submitData = async (data) => {
     const res = await editNaver(data, props.location.state.id);
     if (res) setModalInfo(true);
     else console.log('Não foi possivel atualizar o cadastro');
-  }
+  };
 
   return (
     <>

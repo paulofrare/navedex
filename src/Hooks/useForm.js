@@ -15,7 +15,7 @@ const useForm = (naverValue = '', type = 'text') => {
   const [value, setValue] = useState(naverValue);
   const [error, setError] = useState(null);
 
-  function validate(value) {
+  const validate = (value) => {
     if (type === false) return true;
     if (value.length < 5) {
       setError('Preencha um valor.');
@@ -27,12 +27,12 @@ const useForm = (naverValue = '', type = 'text') => {
       setError(null);
       return true;
     }
-  }
+  };
 
-  function onChange({ target }) {
+  const onChange = ({ target }) => {
     if (error) validate(target.value);
     setValue(target.value);
-  }
+  };
 
   return {
     value,

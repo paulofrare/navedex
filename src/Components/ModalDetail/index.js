@@ -21,9 +21,9 @@ import { Edit, Delete, Close } from '../../Assets/icons/index';
 const ModalDetail = ({ naver, setModal, setModalDelete }) => {
   const history = useHistory();
 
-  function handleOutsideClick(event) {
+  const handleOutsideClick = (event) => {
     if (event.target === event.currentTarget) setModal(false);
-  }
+  };
 
   const getYears = (date) => {
     if (moment(date).fromNow(true).split(' ')[1] !== 'years')

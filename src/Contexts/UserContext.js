@@ -7,6 +7,8 @@ export const UserContext = createContext();
 export const UserStorage = ({ children }) => {
   const [login, setLogin] = useState(null);
   const [token, setToken] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const history = useHistory();
 
   const userLogout = useCallback(
@@ -19,17 +21,22 @@ export const UserStorage = ({ children }) => {
     [history],
   );
 
-  async function userLogin(username, password) {
+  const userLogin = async (username, password) => {
     try {
+      setError(false);
+      setLoading(true);
       const res = await fetchLogin(username, password);
       setLogin(true);
       setToken(res.token);
       window.localStorage.setItem('token', res.token);
+      setLoading(false);
       history.push('/');
     } catch (err) {
+      setLoading(false);
       setLogin(false);
+      setError(true);
     }
-  }
+  };
 
   useEffect(() => {
     async function autoLogin() {
@@ -45,7 +52,9 @@ export const UserStorage = ({ children }) => {
   }, [userLogout, history]);
 
   return (
-    <UserContext.Provider value={{ userLogin, userLogout, login, token }}>
+    <UserContext.Provider
+      value={{ userLogin, userLogout, login, token, loading, error }}
+    >
       {children}
     </UserContext.Provider>
   );

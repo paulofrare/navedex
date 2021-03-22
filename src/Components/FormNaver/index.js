@@ -28,7 +28,7 @@ const FormNaver = ({ naver, setData }) => {
     url: url.value,
   };
 
-  async function handleSubmit(event) {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (
       name.validate() &&
@@ -40,7 +40,7 @@ const FormNaver = ({ naver, setData }) => {
     ) {
       setData(data);
     }
-  }
+  };
 
   return (
     <ContainerForm onSubmit={handleSubmit}>

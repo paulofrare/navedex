@@ -17,15 +17,15 @@ import { deleteNaver } from '../../Services/naversService';
 const ModalDelete = ({ naver, setModal, setModalDelete }) => {
   const [success, setSuccess] = useState(false);
 
-  function handleOutsideClick(event) {
+  const handleOutsideClick = async (event) => {
     if (event.target === event.currentTarget) setModalDelete(false);
-  }
+  };
 
-  async function fetchDelete() {
+  const fetchDelete = async () => {
     const res = await deleteNaver(naver.id);
     if (res) setSuccess(true);
     else console.log('Não foi possivel deletar o Naver');
-  }
+  };
 
   useEffect(() => {
     setModal(false);

@@ -8,7 +8,7 @@ const axiosInstance = axios.create({
     'content-type': 'application/json',
   },
 });
-export async function fetchLogin(email, password) {
+export const fetchLogin = async (email, password) => {
   const data = { email: email, password: password };
   try {
     const result = await axiosInstance.post(`users/login`, data);
@@ -16,4 +16,4 @@ export async function fetchLogin(email, password) {
   } catch (err) {
     throw new Error(err);
   }
-}
+};

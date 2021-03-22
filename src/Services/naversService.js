@@ -11,7 +11,7 @@ const axiosInstance = axios.create({
   },
 });
 
-export async function getNavers(token) {
+export const getNavers = async (token) => {
   const options = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -23,31 +23,31 @@ export async function getNavers(token) {
   } catch (err) {
     throw new Error(err);
   }
-}
+};
 
-export async function createNaver(data) {
+export const createNaver = async (data) => {
   try {
     const result = await axiosInstance.post(`navers`, data);
     return result.data;
   } catch (err) {
     return false;
   }
-}
+};
 
-export async function editNaver(data, id) {
+export const editNaver = async (data, id) => {
   try {
     const result = await axiosInstance.put(`navers/${id}`, data);
     return result.data;
   } catch (err) {
     return false;
   }
-}
+};
 
-export async function deleteNaver(id) {
+export const deleteNaver = async (id) => {
   try {
     const result = await axiosInstance.delete(`navers/${id}`);
     return result.data;
   } catch (err) {
     return false;
   }
-}
+};

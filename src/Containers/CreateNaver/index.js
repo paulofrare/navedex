@@ -11,11 +11,11 @@ const CreateNaver = () => {
   const [modalInfo, setModalInfo] = useState(false);
   const history = useHistory();
 
-  async function submitData(data) {
+  const submitData = async (data) => {
     const res = await createNaver(data);
     if (res) setModalInfo(true);
     else console.log('Não foi possivel criar o cadastro');
-  }
+  };
 
   return (
     <>
